@@ -26,6 +26,7 @@ use PayPal\Api\Transaction;
 use Redirect;
 use Session;
 use URL;
+use ComssionController;
 
 
 
@@ -130,6 +131,9 @@ class PaypalController extends Controller
                 //Get Paypal redirect URL and redirect the customer
 
                 $approveUrl = $payment->getApprovalLink();
+                $user = Auth::user();
+                // payment successful
+                ComssionController::giveCommission($user->referrer_id,$amount, $user->id);
                 session()->put('paypal_payment_id',$payment->getId());
                 session()->forget('cart');
                 return redirect($approveUrl);

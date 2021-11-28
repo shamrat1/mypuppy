@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use ComssionController;
 
 class PolipayController extends Controller
 {
@@ -62,6 +63,10 @@ class PolipayController extends Controller
         $response = curl_exec( $ch );
         curl_close ($ch);
          
+        $user = Auth::user();
+        // payment successful
+        ComssionController::giveCommission($user->referrer_id,$amount, $user->id);
+
         $json = json_decode($response, true);
         // header('Location: '.$json["NavigateURL"]);
         return Redirect::to($json["NavigateURL"]);

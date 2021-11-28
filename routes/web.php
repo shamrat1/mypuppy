@@ -218,6 +218,7 @@ Route::get('/user-settings', [HomeController::class,'user_settings']);
 Route::post('change-password', [HomeController::class, 'changePassword'])->name('change.password');
 Route::post('/apply_coupon_code',[LiveSearchController::class,'couponcode']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/generate/referralCode', [App\Http\Controllers\HomeController::class, 'generateReferral'])->name('home.generate.referral');
 Route::get('/my-orders',[OrderController::class,'myOrders']);
 Route::get('/invoice/{id}',[OrderController::class,'genInvoice'])->name('invoice');
 

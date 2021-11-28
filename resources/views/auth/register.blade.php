@@ -11,7 +11,6 @@
          </ul>
       </div>
 </div>
-@dump($errors)
 <div class="container">
     <div class="row justify-content-center p-5 m-5 shadow">
         <div class="col-md-8">
@@ -48,7 +47,6 @@
 
                            <div class="col-md-6">
                                <input id="username" type="text" class="form-control @error('name') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="UserName" required autocomplete="username">
-
                                @error('username')
                                    <span class="invalid-feedback" role="alert">
                                        <strong>{{ $message }}</strong>
@@ -59,10 +57,8 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
-
                             <div class="col-md-6">
                                 <input id="email" type="email" placeholder="E-Mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

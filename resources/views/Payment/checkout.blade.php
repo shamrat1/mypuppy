@@ -1,7 +1,7 @@
 @extends('layouts.myApp')
 
 @section('content')
-<?php $profile = App\Models\Profile::findOrFail(Auth::user()->id); ?>
+<?php $profile = App\Models\Profile::where("user_id",Auth::user()->id)->first(); ?>
 <style>
     #coupon_code_msg{
     	color:red;
@@ -461,7 +461,7 @@
                                                                 @csrf
 
                                                             <div>
-                                                                <?php $profile = App\Models\Profile::findOrFail(Auth::user()->id); ?>
+                                                                <?php $profile =  App\Models\Profile::where("user_id",Auth::user()->id)->first() ?>
                                                                 <div class="form-group row">
                                                                     <strong>Address : </strong> <input class="form-control" name="address" type="text" value="{{ $profile->address }}" placeholder="Address " >
                                                                 </div>

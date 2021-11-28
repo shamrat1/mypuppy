@@ -16,6 +16,7 @@ class AddReferredDistributionRelatedColsInUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string("username")->unique();
             $table->unsignedInteger("given_commission_count")->default(0);
+            $table->unsignedInteger("credit")->default(0);
         });
     }
 
@@ -27,7 +28,7 @@ class AddReferredDistributionRelatedColsInUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(["username","given_commission_count"]);
+            $table->dropColumn(["username","given_commission_count","credit"]);
         });
     }
 }

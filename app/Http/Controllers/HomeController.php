@@ -35,8 +35,21 @@ class HomeController extends Controller
     {
         return view('Admin_Webpages.Home');
     }
-    
-      public function checkout(Request $request){
+
+    public function generateReferral(Request $request)
+    {
+        $user = Auth::user();
+        $code = HomeController::generateRandomString();
+        $user->referalCode = $code;
+        $user->update();
+        return redirect()->back();
+    }
+
+    static public function generateRandomString($length = 10) {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
+
+    public function checkout(Request $request){
         //dd($request->all());
         return view("Payment.checkout");
     }
