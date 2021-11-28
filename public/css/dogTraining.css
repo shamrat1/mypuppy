@@ -1,0 +1,80 @@
+ #dog-training-content-cards .container {
+    max-width: 1095px !important;
+    }
+    #dog-training-content-cards .row {
+    display: flex;
+    }
+    #dog-training-content-cards .heading-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 40px;
+    }
+    #dog-training-content-cards .heading-holder h2 {
+    padding-bottom: 10px;
+    }
+    #dog-training-content-cards .content-holder {
+    display: flex;
+    flex-direction: column;
+    background-color: #F4F7FF;
+    }
+    #dog-training-content-cards .content-holder img {
+    object-fit: cover;
+    width: 100%;
+    min-height: 314px;
+    background: #73EAFF;
+    }
+    #dog-training-content-cards .content-holder:last-of-type img {
+    object-fit: contain;
+    }
+    #dog-training-content-cards .text-holder {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 25px;
+    }
+    #dog-training-content-cards .text-holder h3 {
+    padding-bottom: 20px;
+    }
+    #dog-training-content-cards .text-holder p:first-of-type {
+    padding-bottom: 30px;
+    }
+    #dog-training-content-cards .text-holder a {
+    text-decoration: underline;
+    }
+    #dog-training-content-cards .btn-holder {
+    display: flex;
+    justify-content: center;
+    }
+    #dog-training-content-cards .btn-holder a {
+    display: flex;
+    justify-content: center;
+    }
+    #dog-training-content-cards .btn-holder button {
+    max-width: 300px !important;
+    }
+    @media screen and (max-width: 768px) {
+    #dog-training-content-cards .row {
+    flex-direction: column;
+    align-items: center;
+    }
+    #dog-training-content-cards .content-holder {
+    max-width: 400px;
+    margin-bottom: 40px;
+    }
+    #dog-training-content-cards .content-holder:last-of-type {
+    margin-bottom: 0;
+    }
+    #dog-training-content-cards .content-holder:last-of-type img {
+    object-fit: contain;
+    }
+    }
+    .primary-cta-blue { 
+    color: #FFFFFF; 
+    background: #00205B; 
+    border: none; 
+    }
+    .primary-cta-blue:hover { 
+    background: #051131; 
+    }

@@ -1,0 +1,51 @@
+#pet-service-categories .container {
+            max-width: 1095px !important;
+        }
+        #pet-service-categories .heading-holder {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        #pet-service-categories .content-holder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        #pet-service-categories .content-holder a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #001952;
+        }
+        #pet-service-categories .content-holder a:hover {
+            text-decoration: underline;
+            color: #001952;
+        }
+        #pet-service-categories .img-holder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 125px;
+            width: 125px;
+        }
+        #pet-service-categories .img-holder img {
+            height: 80px;
+            width: auto;
+        }
+        #pet-service-categories .text-holder {
+            margin-top: 20px;
+        }
+        #pet-service-categories .text-holder h4 {
+            color: #001952;
+        }
+
+        @media screen and (max-width: 768px) {
+            #pet-service-categories .heading-holder h3 {
+                padding: 0 5%;
+            }
+        }

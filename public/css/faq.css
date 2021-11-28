@@ -1,0 +1,95 @@
+ a:hover,
+       a:visited{
+        text-decoration: none!important;
+       }
+        .faq-accordion {
+            margin-left: auto;
+            max-width: 700px
+        }
+        
+        .faq-accordion h2 {
+            margin-bottom: 40px;
+            font-size: 40px;
+            font-weight: 600
+        }
+        
+        .faq-accordion h2 span {
+            display: inline-block;
+            color: #ff612f
+        }
+        
+        .faq-accordion .accordion {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 0
+        }
+        
+        .faq-accordion .accordion .accordion-item {
+            display: block;
+            background: #f5f5ff;
+            margin-bottom: 10px
+        }
+        
+        .faq-accordion .accordion .accordion-item:last-child {
+            margin-bottom: 0
+        }
+        
+        .faq-accordion .accordion .accordion-title {
+            padding: 12px 40px 10px 20px;
+            color: #080a3c;
+            position: relative;
+            display: block;
+            font-size: 16px;
+            font-weight: 500
+        }
+        
+        .faq-accordion .accordion .accordion-title i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            color: #080a3c;
+            font-size: 20px;
+            -webkit-transition: .5s;
+            transition: .5s
+        }
+        
+        .faq-accordion .accordion .accordion-title.active i::before {
+            content: "\f056";
+            color: #ff612f
+        }
+        
+        .faq-accordion .accordion .accordion-content {
+            display: none;
+            position: relative;
+            padding: 15px 20px;
+            font-size: 14px;
+            border-top: 1px solid #ff612f;
+            color: #4a6f8a
+        }
+        
+        .faq-accordion .accordion .accordion-content.show {
+            display: block
+        }
+        
+        .faq-image {
+            margin-left: -64px;
+            width: 620px;
+        }
+        
+        .bg-color-f4f5fe {
+            background-color: #f4f5fe
+        }
+        
+        .bg-color-f4f5fe .faq-accordion .accordion .accordion-item {
+            background: #fff
+        }
+        
+        .app-download-area {
+            background-color: #f4f5fe;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat
+        }
+        
