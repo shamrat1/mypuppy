@@ -54,7 +54,6 @@ class RegisterController extends Controller
         if ($request->has('ref')) {
             session(['referrer' => $request->query('ref')]);
         }
-
         return view('auth.register');
     }
     /**
@@ -85,9 +84,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $referrer = User::whereUsername(session()->pull('referrer'))->first();
+        // if(array_key_exists("referrer",$data)){
+        $referrer = User::where("referalCode",$data["referrer"])->first();
+        // }
         
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'username'    => $data['username'],
             'email' => $data['email'],
@@ -103,7 +104,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'zip' => $data['zip']
         ]);
-        // return $user;
+        return $user;
     }
     
      /**
@@ -115,9 +116,9 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        if ($user->referrer !== null) {
-            Notification::send($user->referrer, new ReferrerBonus($user));
-        }
+        // if ($user->referrer !== null) {
+        //     Notification::send($user->referrer, new ReferrerBonus($user));
+        // }
 
         return redirect($this->redirectPath());
     }

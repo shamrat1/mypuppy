@@ -11,7 +11,7 @@
          </ul>
       </div>
 </div>
-
+@dump($errors)
 <div class="container">
     <div class="row justify-content-center p-5 m-5 shadow">
         <div class="col-md-8">
@@ -24,6 +24,9 @@
 
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        @if(session()->has('referrer'))
+                            <input type="hidden" name="referrer" value="{{ session()->get('referrer') }}">
+                        @endif
                         <h4  class="text-muted">Account Information </h4>
                         <hr>
                         <div class="form-group row">
@@ -40,19 +43,19 @@
                             </div>
                         </div>
                         
-                        <!--<div class="form-group row">-->
-                        <!--    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>-->
+                        <div class="form-group row">
+                           <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
-                        <!--    <div class="col-md-6">-->
-                        <!--        <input id="username" type="text" class="form-control @error('name') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="UserName" required autocomplete="username">-->
+                           <div class="col-md-6">
+                               <input id="username" type="text" class="form-control @error('name') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="UserName" required autocomplete="username">
 
-                        <!--        @error('username')-->
-                        <!--            <span class="invalid-feedback" role="alert">-->
-                        <!--                <strong>{{ $message }}</strong>-->
-                        <!--            </span>-->
-                        <!--        @enderror-->
-                        <!--    </div>-->
-                        <!--</div>-->
+                               @error('username')
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                                   </span>
+                               @enderror
+                           </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>

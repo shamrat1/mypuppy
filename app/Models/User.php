@@ -18,10 +18,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        // 'username',
+        'username',
         'email',
         'password',
         'referrer_id',
+        'referalCode',
+        'given_commission_count',
     ];
 
     /**
