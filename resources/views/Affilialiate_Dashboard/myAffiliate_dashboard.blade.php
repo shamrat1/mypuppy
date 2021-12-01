@@ -101,7 +101,7 @@
 <div class="hidden-xs">
 <h3 class="headings leftheading">Earnings Summary</h3>
 <h3 class="headings rightheading">Total Paid Out
-<span style="color:#3E5169"> $0.00</span>
+<span style="color:#3E5169"> ${{$paidOut}}</span>
 </h3>
 </div>
 <div class="visible-xs">

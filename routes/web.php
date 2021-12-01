@@ -27,6 +27,7 @@ use App\Http\Controllers\AdminWebPageController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\BookAppointmentController;
 use App\Http\Controllers\AffiliateController;
+use App\Http\Controllers\ComssionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,10 @@ use App\Http\Controllers\AffiliateController;
 
 Route::get('/', function () {
     return view('Homepage.welcome');
+});
+
+Route::get('/testomg', function () {
+    ComssionController::giveCommission(15,100,8);
 });
 
 Route::get('/affiliate-program', function () {
