@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AffiliateTransaction;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -20,6 +21,14 @@ class ComssionController extends Controller
                     $receiver->update();
                     $sender->given_commission_count += 1;
                     $sender->update();
+
+                    // create transaction record
+                    AffiliateTransaction::create([
+                        "user_id" => $senderID,
+                        "referrer_id" => $receiverID,
+                        "amount" => round($totalOrderAmount * 0.05),
+                        "status" => "Pending"
+                    ]);
                 }
             }
         }

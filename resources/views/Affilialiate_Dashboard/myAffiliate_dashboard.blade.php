@@ -2,7 +2,9 @@
 <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
 @section('content')
-
+@php 
+	$user = Auth::user();
+@endphp
 <div class="breadcrumbs">
     <ul class="breadcrumb">
        <li><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
@@ -44,10 +46,10 @@
 <div class="col-xs-10 col-md-8 columnheadings ">
 <form class="form-inline copy-link">
 <div class="form-group" style="width: 55%;padding-right: 12px">
-<input type="text" readonly="" class="form-control" style="width:100%" value="https://mypuppymypet?affiliate={{$myreferal}}">
+<input type="text" readonly="" class="form-control" style="width:100%" value="{{route('register')}}?ref={{ $user->referalCode }}">
 </div>
 <div class="form-group" style="width: 35%">
-<button type="button" class="btn btn-primary copy-address" style="width:100%" data-value="https://mypuppymypet?affiliate={{$myreferal}}"><i class="flaticon-copy-1"></i> Copy Link</button>
+<button type="button" class="btn btn-primary copy-address" style="width:100%" data-value="{{route('register')}}?ref={{ $user->referalCode }}"><i class="flaticon-copy-1"></i> Copy Link</button>
 </div>
 <div class="form-group" style="width: 55%; padding-right: 12px; margin-top: 5px;">
 <input type="text" readonly="" class="form-control" style="width:100%" value="{{$myreferal}}">
@@ -88,12 +90,12 @@
 <div class="col-xs-4 col-md-4 columnheadings headerdivider">
 <br>
 <h3 class="heading-space">Verified Affiliates</h3>
-<span class="results">0</span>
+<span class="results">{{ $verifiedCount }}</span>
 </div>
 <div class="col-xs-4 col-md-4 columnheadings lessrightpadding">
 <br>
 <h3 class="heading-space">Active Affiliates</h3>
-<span class="results">0</span>
+<span class="results">{{ $activeCount }}</span>
 </div>
 </div>
 <div class="hidden-xs">
@@ -106,7 +108,7 @@
 <h3 class="headings heading">Earnings Summary</h3>
 <div style="clear: both;"></div>
 <h3 class="payout">Total Paid Out
-<span style="color:#3E5169"> $0.00</span>
+<span style="color:#3E5169"> ${{$paidOut}}</span>
 </h3>
 </div>
 <div style="clear: both;"></div>
@@ -115,7 +117,7 @@
 <br>
 <h3>Next Approx. Affiliate Payout</h3>
 <label>This payment is due on December 15th based on November trading.</label><br>
-<span class="results-main">$0<span class="centsvalue"></span></span>
+<span class="results-main">${{$pendingAmount}}<span class="centsvalue"></span></span>
 </div>
 </div>
 <h3 class="headings">Affiliate Resources</h3>
@@ -153,7 +155,7 @@ Export CSV
 <tr>
 <td>TBA</td>
 <td>Pending</td>
-<td class="text-right">0</td>
+<td class="text-right"></td>
 </tr>
 </tbody></table>
 </div>
@@ -171,17 +173,25 @@ View More
 <div class="table-responsive">
 <table class="table table-striped">
 <tbody><tr>
-<th></th>
 <th>Status</th>
-<th>Type</th>
-<th class="text-right">Action</th>
+<th>Amount</th>
+<th>By User</th>
+<th>Listed At</th>
+{{-- <th class="text-right">Action</th> --}}
 </tr>
-<tr>
-<td>TBA</td>
-<td>Pending</td>
-<td>CSV</td>
-<td class="text-right"></td>
-</tr>
+@forelse ($transactions as $item)
+	<tr>
+		<td>{{ $item->status }}</td>
+		<td>${{ $item->amount }}</td>
+		<td>{{ $item->user->name }}</td>
+		<td>{{ $item->created_at != null ? $item->created_at->format("d-M-y h:i A") : $item->created_at }}</td>
+		{{-- <td class="text-right"></td> --}}
+	</tr>
+@empty
+	<tr>
+		<td colspan="5"></td>
+	</tr>
+@endforelse
 </tbody></table>
 </div>
 </div>
